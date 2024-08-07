@@ -8,12 +8,13 @@ interface IFormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
 }
 
-const RectangleButton = ({ text }: IFormButtonProps) => {
+const RectangleButton = ({ text, ...rest }: IFormButtonProps) => {
   const { pending } = useFormStatus();
   return (
     <button
-      disabled={pending}
       className="h-10 disabled:bg-neutral-400  disabled:text-neutral-300 disabled:cursor-not-allowed"
+      disabled={pending}
+      {...rest}
     >
       {pending ? "로딩 중" : text}
     </button>
