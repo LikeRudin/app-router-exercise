@@ -1,4 +1,5 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, ForwardedRef } from "react";
+import { forwardRef } from "react";
 
 interface IStandardInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
@@ -8,31 +9,29 @@ interface IStandardInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-const StandardInput = ({
-  type,
-  placeholder,
-  required,
-  errors = [],
-  name,
-  ...rest
-}: IStandardInputProps) => {
-  return (
-    <div className="flex flex-col gap-2">
-      <input
-        name={name}
-        className="bg-transparent rounded-md w-full h-10 focus:outline-none ring-2 focus:ring-4 transition ring-neutral-200 focus:ring-orange-500 border-none placeholder:text-neutral-400"
-        type={type}
-        placeholder={placeholder}
-        required={required}
-        {...rest}
-      />
-      {errors.map((error, index) => (
-        <span key={index} className="text-red-500 font-medium">
-          {error}
-        </span>
-      ))}
-    </div>
-  );
-};
+const StandardInput = forwardRef<HTMLInputElement, IStandardInputProps>(
+  ({ type, placeholder, required, errors = [], name, ...rest }, ref) => {
+    return (
+      <div className="flex flex-col gap-2">
+        <input
+          name={name}
+          className="bg-transparent rounded-md w-full h-10 focus:outline-none ring-2 focus:ring-4 transition ring-neutral-200 focus:ring-orange-500 border-none placeholder:text-neutral-400"
+          type={type}
+          placeholder={placeholder}
+          required={required}
+          ref={ref}
+          {...rest}
+        />
+        {errors.map((error, index) => (
+          <span key={index} className="text-red-500 font-medium">
+            {error}
+          </span>
+        ))}
+      </div>
+    );
+  }
+);
+
+StandardInput.displayName = "StandardInput";
 
 export default StandardInput;
