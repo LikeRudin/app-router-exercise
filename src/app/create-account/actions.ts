@@ -1,4 +1,5 @@
 "use server";
+
 import {
   PASSWORD_MIN_LENGTH,
   PASSWORD_REGEX,
@@ -66,7 +67,7 @@ export const createAccount = async (prevState: any, formData: FormData) => {
     console.log(result.data);
     return {
       success: true,
-      message: "계정이 성공적으로 생성되었습니다.,
+      message: "계정이 성공적으로 생성되었습니다",
     };
   }
 };
