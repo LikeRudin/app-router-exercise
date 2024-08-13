@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "NextJS-HomeWork",
-    default: "Tweet-HomeWork",
+    template: "%s | Karrot Market",
+    default: "Karrot Market",
   },
-  description: "",
+  description: "Sell and buy all the things!",
 };
 
 export default function RootLayout({
