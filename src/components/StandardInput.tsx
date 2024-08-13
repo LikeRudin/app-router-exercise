@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes, ForwardedRef } from "react";
+import type { InputHTMLAttributes } from "react";
 import { forwardRef } from "react";
 
 interface IStandardInputProps extends InputHTMLAttributes<HTMLInputElement> {
