@@ -1,4 +1,5 @@
 import TweetList from "@/components/TweetList";
+import AddTweet from "@/components/TweetUploadForm";
 import dbClient from "@/lib/db";
 
 export async function getInitialTweets() {
@@ -22,6 +23,7 @@ export default async function Home() {
   const tweets = await getInitialTweets();
   return (
     <main>
+      <AddTweet />
       {
         //@ts-ignore
         <TweetList initialTweets={tweets} />
